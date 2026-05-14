@@ -183,7 +183,7 @@ document.getElementById("formPresente").addEventListener("submit", async (e) => 
   }
 
 
-  await fetch(apiUrl, { method:"POST", body: JSON.stringify({nome, sobrenome, presente:presenteSelecionado}) });
+  await fetch(apiUrl, { method:"POST",mode: "no-cors", cache: "no-cache", body: JSON.stringify({nome, sobrenome, presente:presenteSelecionado}) });
   alert("✅ Obrigado! Seu presente foi reservado com sucesso.");
   carregarPresentes();
   document.getElementById("nome").value = "";
