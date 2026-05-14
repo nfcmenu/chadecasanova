@@ -1,0 +1,447 @@
+    /* Reset */
+    
+    
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-size: cover;
+      line-height: 1.6;
+      margin: 0;
+      padding: 40px 20px;
+      background-repeat: repeat;
+      background-size: auto; /* ou 'cover' se quiser preencher toda a tela */
+      background-attachment: fixed; /* opcional: deixa o fundo fixo */
+      background-image: url("./8A00008A0000.jpeg");
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      color: #110201;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      color: #fff0ca;
+    }
+
+  
+
+    ul{
+      text-align: center;
+      color: #000000;
+    }
+
+    /* Splash */
+    #splash-screen {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, #060124, #000000);
+      color: #fff0ca;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      z-index: 9999;
+      flex-direction: column;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    #splash-message {
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+      max-width: 90%;
+    }
+
+    /* Navegação */
+    nav {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      background: rgba(0, 0, 0, 0.95);
+      padding: 1rem;
+      z-index: 1000;
+      backdrop-filter: blur(5px);
+    }
+
+    nav a {
+      color: #fff0ca;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffb347;
+    }
+
+    /* Conteúdo geral */
+    .box {
+      max-width: 600px;
+      margin: 6rem auto 2rem;
+      padding: 2rem;
+      background: #8C1007;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    
+    .h2 titulo {
+      color: #fff0ca;
+    }
+
+    .box h2 {
+      margin-bottom: 1rem;
+    }
+
+    .box input, .box button {
+      background-image: url(./8A00008A0000.jpeg);
+      margin-top: 1rem;
+      padding: 1rem;
+      width: 80%;
+      border-radius: 10px;
+      border: 2.5px solid #064e0f;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    .box button {
+      background: #3B060A;
+      color: #fff0c4;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+      display: block;
+      margin: 1rem auto 0;
+      width: 200px;
+    }
+
+    .box small {
+      display: block;
+      margin-top: 0.5em;
+      font-size: 0.9em;
+      color:#fff0ca
+    }
+
+    .box button:hover {
+      background: #ffb347;
+      color: black;
+      transform: scale(1.05);
+    }
+
+    /* Sobre nós */
+    #sobre-nos {
+      padding: 5rem 1rem 3rem;
+      margin-top: 4rem;
+      text-align: center;
+    }
+
+    #sobre-nos h2 {
+      margin-bottom: 2rem;
+    }
+
+    .sobre-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .sobre-container img {
+      width: 220px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      border: 6px solid #fff;
+      transform: rotate(-2deg);
+    }
+
+    .sobre-texto {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: #444;
+      padding: 0 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .sobre-container {
+        flex-direction: row;
+        text-align: left;
+      }
+
+      .sobre-texto {
+        max-width: 500px;
+      }
+    }
+
+
+    .timeline {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 40px auto;
+      max-width: 900px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      height: 4px;
+      width: 100%;
+      background: #ccc;
+      transform: translateY(-50%);
+      z-index: 0;
+    }
+
+    .timeline-event {
+      position: relative;
+      text-align: center;
+      width: 120px;
+      z-index: 1;
+    }
+
+    .timeline-event img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      margin-bottom: 10px;
+    }
+
+    .timeline-event .dot {
+      width: 16px;
+      height: 16px;
+      background: #ff6f61;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 0 4px #fff;
+    }
+
+    .timeline-event h3 {
+      margin: 5px 0 0;
+      font-size: 14px;
+    }
+
+    .timeline-event p {
+      font-size: 12px;
+      color: #555;
+    }
+
+    h3{
+      color: #000000;
+      padding-top: 1rem;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    h4 {
+      color: #000000;
+      padding-top: 1rem;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    h5 {
+      color: #020000;
+    }
+
+    p{
+      color: #fff0c4;
+      font-family: "Roboto", sans-serif;
+    }
+
+
+    h1 {
+      text-align: center;
+      margin-bottom: 50px;
+      font-size: 28px;
+      color: #4b2c20;
+    }
+
+    .timeline {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin: 0 auto;
+      max-width: 1100px;
+      flex-wrap: nowrap;
+    }
+
+    /* linha central */
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 75px;
+      left: 0;
+      height: 4px;
+      width: 100%;
+      background: #ddd;
+      z-index: 0;
+    }
+
+    .timeline-event {
+      position: relative;
+      text-align: center;
+      width: 120px;
+      z-index: 1;
+    }
+
+    .timeline-event img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #000000;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      background: #fff0c4;
+    }
+
+    .timeline-event .dot {
+      width: 18px;
+      height: 18px;
+      background: #fff0c4;
+      border-radius: 50%;
+      position: absolute;
+      top: 75px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 3px solid #000000;
+      box-shadow: 0 0 0 3px #fff0c4;
+    }
+
+    .timeline-event h3 {
+      margin: 20px 0 5px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #4b2c20;
+    }
+
+    .timeline-event p {
+      font-size: 13px;
+      color: #444;
+      line-height: 1.4;
+    }
+    .end {
+      color: #000000;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      
+    }
+
+    /* Layout para celular: fica vertical */
+    @media (max-width: 768px) {
+      .timeline {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .timeline::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        height: 100%;
+        width: 4px;
+        background: #ddd;
+        transform: translateX(-50%);
+      }
+
+      .timeline-event {
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 50px;
+        text-align: center;
+      }
+
+      .timeline-event .dot {
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .timeline-event img {
+        margin-bottom: 15px;
+      }
+    }
+
+    /* formulario */
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Segoe UI", Arial, sans-serif; }
+
+  p.subtitle { font-size: 1rem; margin-bottom: 20px; color: #555; text-align: center;}
+  label { display: block; text-align: left; margin: 12px 0 6px; font-weight: bold; color: #444; }
+  input { width: 100%; padding: 12px; border-radius: 12px; border: 2px solid #ccc; font-size: 1rem; outline: none; text-transform: uppercase; transition: 0.3s; }
+  input:focus { border-color: #2575fc; box-shadow: 0 0 6px #2575fc55; }
+
+  /* Custom select */
+  .custom-select-wrapper { position: relative; width: 100%; margin-top: 5px; }
+  .custom-select { background: linear-gradient(135deg, #2575fc, #6a11cb); color: #fff; font-weight: bold; border-radius: 10px; cursor: pointer; padding: 12px; user-select: none; }
+  .custom-select:after { content: "▼"; float: right; margin-right: 10px; }
+  .custom-options { position: absolute; top: 100%; left: 0; right: 0; background: linear-gradient(135deg, #2575fc, #6a11cb); border-radius: 0 0 10px 10px; max-height: 200px; overflow-y: auto; display: none; z-index: 10; color: #fff; }
+  .custom-option { padding: 12px; cursor: pointer; color: #fff; }
+  .custom-option:hover { background: rgba(255,255,255,0.2); }
+
+  .contador { margin-top: 20px; padding: 14px; border-radius: 12px; background: linear-gradient(135deg, #20022c, #8402ff); color: #fff; font-size: 1rem; font-weight: bold; box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
+  button { width: 100%; padding: 14px; margin-top: 20px; border: none; border-radius: 12px; background: linear-gradient(135deg, #2575fc, #6a11cb); color: #fff; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.3s; }
+  button:hover { transform: scale(1.05); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 500px) { 
+.container2 {
+  flex-direction: column; }
+  {display: flex;}
+  { padding: 25px 20px; } 
+  h1 { font-size: 1.5rem; }   
+}
+  h2 {
+    color: #000000;
+    text-align: center;
+  }
+.sobrenos {
+  flex-direction: column; 
+  display: flex;}
+.formulario2 {
+  background-color: #ffffff; /* O fundo branco que você quer */
+  
+  /* Espaçamento interno, para o formulário não colar nas bordas */
+  padding: 30px;           
+
+  /* Bordas arredondadas, para ficar mais bonito */
+  border-radius: 16px;     
+  
+  /* Uma sombra suave para dar profundidade */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+
+  /* Define uma largura máxima e centraliza o bloco na tela */
+  max-width: 600px;  /* Você pode ajustar esse valor */
+  margin: 40px auto; /* 40px em cima/baixo, e 'auto' nas laterais para centralizar */
+}
+#entrada {
+  margin-top: 100px;  
+                     /* Ajuste 80px se quiser mais ou menos espaço. */
+}
+.mapa {
+  display: block;
+  margin: 0 auto;
+  border: 0;
+}

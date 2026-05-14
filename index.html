@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chá de Casa Nova</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="casa.ico" type="image/x-icon">
+</head>
+<body>
+
+<div class="sobrenos">
+  <!-- Splash -->
+  <div id="splash-screen">
+    <span id="splash-message"></span>
+  </div>
+
+  <!-- Navbar -->
+  <nav>
+    <a href="#sobre-nos">Sobre nós 💕</a>
+    <a href="#entrada">Lista de Presentes 🎁</a>
+  </nav>
+
+  <!-- Seção Sobre nós -->
+  <section id="sobre-nos">
+    <h1>Sobre nós 💕</h1>
+    <div class="sobre-container">
+      <img src="./foto_casal.jpeg" alt="Foto do casal">
+      <div class="sobre-texto">
+        <h4>Olá, seja bem vindo! Se você está nesse site, significa que você foi convidado para participar desse momento extremamente especial!</h4>
+      <h4>Este momento será onde compartilharemos essa alegria com nossos amigos e familiares
+          e estamos felizes por ter você fazendo parte dessa história.
+        </h4>
+        <h4>
+          Este site é um jeito de deixar tudo mais fácil: você encontra os presentes, confirma sua presença 
+          e ainda pode conhecer um pouco mais da nossa historia. 💖
+        </h4>
+      </div>
+    </div>
+  </section>
+    <h1 style="text-align:center;">A jornada até aqui</h1>
+
+  <div class="timeline">
+    <div class="timeline-event">
+      <img src="./O começo.jpeg" alt="Nos conhecemos">
+      <div class="dot"></div>
+      <h3><b>Nosso começo</b></h3>
+      <h5>Em seu trabalho <3</h5>
+    </div>
+
+    <div class="timeline-event">                                    
+      <img src="./Amor.jpeg" alt="Nos apaixonamos">
+      <div class="dot"></div>
+      <h3><b>Nasce o amor</b></h3>
+      <h5>Quando nos apaixonamos</h5>
+    </div>
+
+    <div class="timeline-event">
+      <img src="./Barradas.jpeg" alt="Sempre curtindo nossos momentos juntos">
+      <div class="dot"></div>
+      <h3><b>Companheirismo</b></h3>
+      <h5>Sempre curtindo nossos momentos juntos</h5>
+    </div>
+
+    <div class="timeline-event">
+      <img src="./Reconhecimento de passos.jpeg" alt="Sempre nos momentos importantes, um para o outro">
+      <div class="dot"></div>
+      <h3><b>Parceria</b></h3>
+      <h5>Sempre nos momentos importantes, um para o outro</h5>
+    </div>
+    
+    
+    <div class="timeline-event">
+      <img src="./fotocasal2.jpeg" alt="Nossa conquista">
+      <div class="dot"></div>
+      <h3><b>Nossa conquista</b></h3>
+      <h5>Quando conquistamos nossa independência</h5>
+    </div>
+    
+    <div class="timeline-event">
+      <img src="./O pedido.jpeg" alt="Chegou a hora">
+      <div class="dot"></div>
+      <h3><b>Namoro</b></h3>
+      <h5>Finalmente chegou a hora</h5>
+    </div>
+  </br>    
+ </br>  
+</div>
+ 
+  <!-- Entrada de nome -->
+  <div id="entrada">
+  
+<div class="container2">
+  <h1>🎉 Chá de Casa Nova 🎉</h1>
+  <h2>💙 Davi & Gabriel 💙</h2>
+  <p class="subtitle">Preencha seus dados e escolha um presente:</p>
+
+  <div class="formulario2">
+    <form id="formPresente">
+      <label for="nome">Nome</label>
+      <input type="text" id="nome" required>
+
+      <label for="sobrenome">Sobrenome</label>
+      <input type="text" id="sobrenome" required>
+
+      <label for="presente">Escolha um presente</label>
+      <div class="custom-select-wrapper">
+      <div class="custom-select" id="customSelect">Selecione um presente</div>
+      <div class="custom-options" id="customOptions"></div>
+      </div>
+
+      <label id="contador" class="contador">🎁 Presentes disponíveis: 3</label>
+
+      <button type="submit">Confirmar Presença 💝</button> </br></br>
+
+      <img src="Palheta.jpg" alt="" style="width:200px; display:block; margin: 0 auto;">
+      <p class="subtitle">Data: 09/11/25</p>
+      <p class="subtitle">Início: Às 14h00min!</p>
+      <p class="subtitle">🏡 Endereço: Rua Rosário 91 B Cabuçu, CEP: 26291-236</p>
+    </form>
+    
+    <iframe class="mapa" src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d459.86374158812924!2d-43.53992331679384!3d-22.768723548234654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjLCsDQ2JzA3LjIiUyA0M8KwMzInMjMuNiJX!5e0!3m2!1spt-BR!2sbr!4v1761766334806!5m2!1spt-BR!2sbr" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    
+  </div>
+</div>
+
+<script>
+const apiUrl = "https://script.google.com/macros/s/AKfycbwenTJlBtOBtz7sKH1Xq1L3Sr1mPhLbmwHWwLyH4-81KYfA-m-LOmUnMEHUcTGCu-yA/exec";
+let presenteSelecionado = null;
+
+async function carregarPresentes() {
+  try {
+    const res = await fetch(apiUrl);
+    const dados = await res.json();
+    const presentes = Array.isArray(dados) ? dados : dados.presentes || [];
+
+    const optionsDiv = document.getElementById("customOptions");
+    optionsDiv.innerHTML = "";
+    presentes.forEach(p => {
+      const div = document.createElement("div");
+      div.classList.add("custom-option");
+      div.textContent = p;
+      div.addEventListener("click", () => {
+        presenteSelecionado = p;
+        document.getElementById("customSelect").textContent = p;
+        optionsDiv.style.display = "none";
+      });
+      optionsDiv.appendChild(div);
+    });
+
+    document.getElementById("contador").textContent = `🎁 Presentes disponíveis: ${presentes.length}`;
+  } catch(err) { console.error("Erro ao carregar dados:", err); }
+}
+
+// Toggle dropdown
+document.getElementById("customSelect").addEventListener("click", () => {
+  const optionsDiv = document.getElementById("customOptions");
+  optionsDiv.style.display = optionsDiv.style.display === "block" ? "none" : "block";
+});
+
+// Fecha dropdown ao clicar fora
+document.addEventListener("click", (e) => {
+  const wrapper = document.querySelector(".custom-select-wrapper");
+  if(!wrapper.contains(e.target)){
+    document.getElementById("customOptions").style.display = "none";
+  }
+});
+
+function validarTexto(str){ const regex = /^[A-ZÀ-Ú\s]+$/; return regex.test(str); }
+
+document.getElementById("formPresente").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  let nome = document.getElementById("nome").value.trim().toUpperCase();
+  let sobrenome = document.getElementById("sobrenome").value.trim().toUpperCase();
+
+  if (!validarTexto(nome) || !validarTexto(sobrenome)) {
+    alert("⚠️ Digite apenas letras e espaços em Nome e Sobrenome."); return;
+  }
+  if(!presenteSelecionado){
+    alert("⚠️ Selecione um presente."); return;
+  }
+
+
+  await fetch(apiUrl, { method:"POST", body: JSON.stringify({nome, sobrenome, presente:presenteSelecionado}) });
+  alert("✅ Obrigado! Seu presente foi reservado com sucesso.");
+  carregarPresentes();
+  document.getElementById("nome").value = "";
+  document.getElementById("sobrenome").value = "";
+  presenteSelecionado = null;
+  document.getElementById("customSelect").textContent = "Selecione um presente";
+});
+
+carregarPresentes();
+</script>
+
+
+  <script>
+  const frases = [
+    "Bem-vindo ao nosso site",
+    "'As muitas águas não poderiam apagar o amor' - Cânticos 8:7",
+  ];
+
+  let i = 0;
+  const msg = document.getElementById("splash-message");
+  const splash = document.getElementById("splash-screen");
+
+  function mostrarFrase() {
+    msg.style.opacity = "0";
+    setTimeout(() => {
+      msg.innerText = frases[i];
+      msg.style.opacity = "1";
+      i++;
+    }, 1100);
+  }
+
+  msg.innerText = frases[i];
+  msg.style.opacity = "1";
+  i++;
+
+  setInterval(() => {
+    if (i < frases.length) {
+      mostrarFrase();
+    }
+  }, 7000);
+
+  const tempoTotal = frases.length * 5500;
+
+  setTimeout(() => {
+    splash.style.opacity = "0";
+    setTimeout(() => {
+      splash.style.display = "none";
+    }, 1500);
+  }, tempoTotal);
+
+  function salvarNome() {
+    const nome = document.getElementById("nomeConvidado").value.trim();
+    if (nome) {
+      localStorage.setItem("convidado", nome);
+      window.location.href = "produtos.html";
+    } else {
+      alert("Por favor, digite seu nome.");
+    }
+  }
+  </script>
+</body>
+</html>
