@@ -127,72 +127,203 @@
 </div>
 
 <script>
+
 const apiUrl = "https://script.google.com/macros/s/AKfycby0p66DQX-C-jOWZwRjstp8KdtHftCwbh2f95hd9QKEQAF0zZQmAOi3Lzaa6_vgwvrUvQ/exec";
+
 let presenteSelecionado = null;
 
+
+// =========================
+// CARREGAR PRESENTES
+// =========================
 async function carregarPresentes() {
+
   try {
+
     const res = await fetch(apiUrl);
-    const dados = await res.json();
-    const presentes = Array.isArray(dados) ? dados : dados.presentes || [];
+
+    const presentes = await res.json();
 
     const optionsDiv = document.getElementById("customOptions");
+
     optionsDiv.innerHTML = "";
-    presentes.forEach(p => {
+
+    presentes.forEach(presente => {
+
       const div = document.createElement("div");
+
       div.classList.add("custom-option");
-      div.textContent = p;
+
+      div.textContent = presente;
+
       div.addEventListener("click", () => {
-        presenteSelecionado = p;
-        document.getElementById("customSelect").textContent = p;
+
+        presenteSelecionado = presente;
+
+        document.getElementById("customSelect")
+          .textContent = presente;
+
         optionsDiv.style.display = "none";
       });
+
       optionsDiv.appendChild(div);
     });
 
-    document.getElementById("contador").textContent = `🎁 Presentes disponíveis: ${presentes.length}`;
-  } catch(err) { console.error("Erro ao carregar dados:", err); }
+    document.getElementById("contador")
+      .textContent =
+      `🎁 Presentes disponíveis: ${presentes.length}`;
+
+  } catch(err) {
+
+    console.error("Erro ao carregar presentes:", err);
+  }
 }
 
-// Toggle dropdown
-document.getElementById("customSelect").addEventListener("click", () => {
-  const optionsDiv = document.getElementById("customOptions");
-  optionsDiv.style.display = optionsDiv.style.display === "block" ? "none" : "block";
-});
 
-// Fecha dropdown ao clicar fora
+// =========================
+// ABRIR / FECHAR SELECT
+// =========================
+document.getElementById("customSelect")
+  .addEventListener("click", () => {
+
+    const optionsDiv =
+      document.getElementById("customOptions");
+
+    optionsDiv.style.display =
+      optionsDiv.style.display === "block"
+      ? "none"
+      : "block";
+  });
+
+
+// =========================
+// FECHAR AO CLICAR FORA
+// =========================
 document.addEventListener("click", (e) => {
-  const wrapper = document.querySelector(".custom-select-wrapper");
-  if(!wrapper.contains(e.target)){
-    document.getElementById("customOptions").style.display = "none";
+
+  const wrapper =
+    document.querySelector(".custom-select-wrapper");
+
+  if (!wrapper.contains(e.target)) {
+
+    document.getElementById("customOptions")
+      .style.display = "none";
   }
 });
 
-function validarTexto(str){ const regex = /^[A-ZÀ-Ú\s]+$/; return regex.test(str); }
 
-document.getElementById("formPresente").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  let nome = document.getElementById("nome").value.trim().toUpperCase();
-  let sobrenome = document.getElementById("sobrenome").value.trim().toUpperCase();
+// =========================
+// VALIDAR TEXTO
+// =========================
+function validarTexto(str) {
 
-  if (!validarTexto(nome) || !validarTexto(sobrenome)) {
-    alert("⚠️ Digite apenas letras e espaços em Nome e Sobrenome."); return;
-  }
-  if(!presenteSelecionado){
-    alert("⚠️ Selecione um presente."); return;
-  }
+  const regex = /^[A-ZÀ-Ú\s]+$/;
+
+  return regex.test(str);
+}
 
 
-  await fetch(apiUrl, { method:"POST",mode: "no-cors", cache: "no-cache", body: JSON.stringify({nome, sobrenome, presente:presenteSelecionado}) });
-  alert("✅ Obrigado! Seu presente foi reservado com sucesso.");
-  carregarPresentes();
-  document.getElementById("nome").value = "";
-  document.getElementById("sobrenome").value = "";
-  presenteSelecionado = null;
-  document.getElementById("customSelect").textContent = "Selecione um presente";
+// =========================
+// ENVIAR FORMULÁRIO
+// =========================
+document.getElementById("formPresente")
+  .addEventListener("submit", async (e) => {
+
+    e.preventDefault();
+
+    let nome =
+      document.getElementById("nome")
+      .value
+      .trim()
+      .toUpperCase();
+
+    let sobrenome =
+      document.getElementById("sobrenome")
+      .value
+      .trim()
+      .toUpperCase();
+
+
+    // VALIDAR NOME
+    if (
+      !validarTexto(nome) ||
+      !validarTexto(sobrenome)
+    ) {
+
+      alert(
+        "⚠️ Digite apenas letras e espaços."
+      );
+
+      return;
+    }
+
+
+    // VALIDAR PRESENTE
+    if (!presenteSelecionado) {
+
+      alert("⚠️ Selecione um presente.");
+
+      return;
+    }
+
+
+    try {
+
+      await fetch(apiUrl, {
+
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+
+          nome: nome,
+
+          sobrenome: sobrenome,
+
+          presente: presenteSelecionado
+        })
+      });
+
+
+      alert(
+        "✅ Obrigado! Seu presente foi reservado com sucesso."
+      );
+
+
+      // LIMPAR FORM
+      document.getElementById("nome").value = "";
+
+      document.getElementById("sobrenome").value = "";
+
+      presenteSelecionado = null;
+
+      document.getElementById("customSelect")
+        .textContent =
+        "Selecione um presente";
+
+
+      // RECARREGAR LISTA
+      carregarPresentes();
+
+    } catch(err) {
+
+      console.error(err);
+
+      alert(
+        "❌ Erro ao enviar reserva."
+      );
+    }
 });
 
+
+// =========================
+// INICIAR
+// =========================
 carregarPresentes();
+
 </script>
 
 
